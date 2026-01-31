@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskBloom - Earn Money by Completing Simple Tasks</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌸</span>
+                <span class="logo-text">TaskBloom</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                <li><a href="#" data-page="tasks" class="nav-link">Tasks</a></li>
+                <li class="auth-only hidden"><a href="#" data-page="dashboard" class="nav-link">Dashboard</a></li>
+                <li class="guest-only"><a href="#" data-page="login" class="nav-link btn-secondary">Login</a></li>
+                <li class="guest-only"><a href="#" data-page="signup" class="nav-link btn-primary">Sign Up</a></li>
+                <li class="auth-only hidden"><a href="#" id="logoutBtn" class="nav-link">Logout</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🌿 New Way to Earn</div>
+                <h1 class="hero-title">TaskBloom – Earn Money by Completing Simple Tasks</h1>
+                <p class="hero-description">
+                    Join thousands of earners who make money daily by completing micro-tasks. 
+                    From surveys to social media engagement, start earning from the comfort of your home.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$2M+</span>
+                        <span class="stat-label">Paid Out</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Daily Tasks</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="navigateTo('signup')">Get Started</button>
+                    <button class="btn btn-outline btn-large" onclick="navigateTo('tasks')">Browse Tasks</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <span class="icon">✓</span>
+                    <div>
+                        <div class="card-title">Task Completed</div>
+                        <div class="card-amount">+$0.50</div>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <span class="icon">💰</span>
+                    <div>
+                        <div class="card-title">Total Earnings</div>
+                        <div class="card-amount">$24.00</div>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="bloom-circle"></div>
+                    <div class="bloom-circle-2"></div>
+                    <span class="bloom-emoji">🌺</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Choose a Task</h3>
+                    <p>Browse hundreds of available micro-tasks from our partners</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Complete Work</h3>
+                    <p>Follow simple instructions and submit your work</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💵</div>
+                    <h3>Get Paid</h3>
+                    <p>Earn real money instantly added to your balance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tasks Section -->
+    <section id="tasks" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Available Tasks</h2>
+                <p class="section-subtitle">Complete simple tasks and earn money instantly</p>
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Tasks</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+                <button class="filter-btn" data-filter="survey">Surveys</button>
+                <button class="filter-btn" data-filter="app">Apps</button>
+            </div>
+
+            <div id="tasksContainer" class="tasks-grid">
+                <!-- Tasks will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up Section -->
+    <section id="signup" class="page-section auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <span class="auth-icon">🌱</span>
+                    <h2>Create Account</h2>
+                    <p>Start your earning journey today</p>
+                </div>
+                <form id="signupForm" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" required placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required placeholder="••••••••" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="captcha">Security Check: <span id="captchaQuestion">What is 5 + 3?</span></label>
+                        <input type="number" id="captcha" required placeholder="Enter answer">
+                        <input type="hidden" id="captchaAnswer" value="8">
+                    </div>
+                    <div class="form-error" id="signupError"></div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="navigateTo('login')">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="page-section auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <span class="auth-icon">🌿</span>
+                    <h2>Welcome Back</h2>
+                    <p>Login to continue earning</p>
+                </div>
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+                    </div>
+                    <div class="form-error" id="loginError"></div>
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="navigateTo('signup')">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="page-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="welcome-msg">
+                    <h2>Welcome back, <span id="userName">User</span>! 👋</h2>
+                    <p>Here's your earning overview</p>
+                </div>
+                <button class="btn btn-outline" onclick="navigateTo('tasks')">Find Tasks</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card earnings">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-info">
+                        <span class="stat-label">Total Earnings</span>
+                        <span class="stat-value" id="totalEarnings">$0.00</span>
+                    </div>
+                </div>
+                <div class="stat-card completed">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <span class="stat-label">Tasks Completed</span>
+                        <span class="stat-value" id="completedTasks">0</span>
+                    </div>
+                </div>
+                <div class="stat-card pending">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-info">
+                        <span class="stat-label">Available Tasks</span>
+                        <span class="stat-value" id="availableTasks">12</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div id="activityList" class="activity-list">
+                        <div class="empty-state">
+                            <span class="empty-icon">📝</span>
+                            <p>No tasks completed yet. Start earning now!</p>
+                            <button class="btn btn-primary" onclick="navigateTo('tasks')">Browse Tasks</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="navigateTo('tasks')">
+                            <span class="action-icon">🔍</span>
+                            <span>Browse Tasks</span>
+                        </button>
+                        <button class="action-btn" onclick="alert('Withdrawal simulated! In a real app, this would process your payment.')">
+                            <span class="action-icon">🏦</span>
+                            <span>Withdraw</span>
+                        </button>
+                        <button class="action-btn" onclick="alert('Profile settings would open here')">
+                            <span class="action-icon">⚙️</span>
+                            <span>Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Task Title</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="task-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Reward:</span>
+                        <span class="detail-value reward" id="modalReward">$0.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time:</span>
+                        <span class="detail-value" id="modalTime">0 min</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Category:</span>
+                        <span class="detail-value" id="modalCategory">General</span>
+                    </div>
+                </div>
+                <div class="task-instructions">
+                    <h4>Instructions:</h4>
+                    <p id="modalDescription">Task description goes here...</p>
+                    <div class="instruction-steps" id="modalSteps">
+                        <!-- Steps populated by JS -->
+                    </div>
+                </div>
+                <div class="task-progress hidden" id="taskProgress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p>Verifying task completion...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" id="completeTaskBtn" onclick="completeCurrentTask()">Complete Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message">Operation successful</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
